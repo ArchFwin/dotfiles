@@ -1,0 +1,2 @@
+#!/bin/sh
+redshift -l 55.8:-4.35 -t 5700:3600 -g 0.8 -m vidmode -v

@@ -1,0 +1,93 @@
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' glob unset
+zstyle ':completion:*' max-errors 3 numeric
+zstyle ':completion:*' prompt '%e errors found, possible corrections:'
+zstyle ':completion:*' menu select
+zstyle :compinstall filename '/home/andrew/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory autocd nomatch notify
+bindkey -v
+# End of lines configured by zsh-newuser-install
+
+#Prompt Configuration
+autoload -U promptinit
+promptinit
+autoload -U colors
+colors
+#Prompt with plenty of colour, and accurate time.
+PROMPT="[$fg[blue]%* $fg[green]%n $fg[yellow]%m$fg[red]%(?.. %?)$reset_color %~] 
+⇀  " 
+schedprompt(){
+	emulate -L zsh
+	zmodload -i zsh/sched
+	integer i=${"${(@)zsh_sheduled_events#*:*:}"[(I)schedprompt]}
+	(( i )) && sched -$i
+	zle && zle reset-prompt
+	sched +1 schedprompt
+}
+
+schedprompt
+
+#Aliases
+alias ls="ls --color=auto -A"
+alias pgrep="pgrep -l"
+alias update="yaourt -Syau"
+alias cp="cp -r --reflink=auto"
+alias fucking="sudo"
+alias rm="rm -r"
+#Environment Variables
+export EDITOR="vim"
+#File Extraction
+ex()
+{
+	if [ -f $1 ] ; then
+		case $1 in
+			*.tar.bz2)	tar xjf $1	;;
+			*.tar.gz)	tar xzf $1	;;
+			*.bz2)		bunzip2 $1	;;
+			*.rar)		unrar x $1	;;
+			*.gz)		gunzip $1	;;
+			*.tar)		tar xf $1	;;
+			*.tbz2)		tar xjf $1	;;
+			*.tgz)		tar xzf $1	;;
+			*.zip)		unzip $1	;;
+			*.Z)		uncompress $1	;;
+			*.7z)		7z x $1		;;
+			*)			echo "'$1' cannot be extracted"	;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
+}
+#Go function. For when you want to go somewhere else and see what's there.
+go()
+{
+	cd "$1" || return 1;
+	ls;
+}
+#Key Bindings
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+
+#Pkgfile command not found
+command_not_found_handler(){
+	local pkgs cmd="$1"
+	pkgs=(${(f)"$(pkgfile -bv -- "$cmd" 2>/dev/null)"})
+	printf "$fg[red] I'm sorry, $LOGNAME. I'm afraid I can't do that. \n"
+	if [[ -n "$pkgs" ]]; then
+		printf "$fg[yellow] %s \n" $pkgs[@]
+		return 0
+	else;
+		printf "No packages provide $1 \n"
+	fi
+}

@@ -1,0 +1,51 @@
+# $Id: PKGBUILD 60970 2011-12-19 21:33:58Z spupykin $
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Dag Odenhall <dag.odenhall@gmail.com>
+# Contributor: Grigorios Bouzakis <grbzks@gmail.com>
+
+pkgname=dwm
+pkgver=6.0
+pkgrel=5
+pkgdesc="A dynamic window manager for X-Custom"
+url="http://dwm.suckless.org"
+arch=('i686' 'x86_64')
+license=('MIT')
+optdepends=('zipman')
+depends=('libx11' 'libxinerama')
+source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
+	https://raw.github.com/Unia/DWM/master/Other%20patches/dwm-$pkgver-systray.diff
+	http://dwm.suckless.org/patches/dwm-$pkgver-float_border_color2.diff
+	http://dwm.suckless.org/patches/dwm-$pkgver-singularborders.diff
+    https://raw.github.com/Unia/DWM/master/01-dwm-6.0-pango.diff
+	dwm.desktop
+	config.h)
+md5sums=('db2b5124e811148e54c20293415c1cbb'
+         'e53aab5c352d8efcc32c072356d9f37b'
+         'c83cda9b739cdc25d5960576a24027f1'
+         '8dfaad549eedb2f7965bf49e91fe218f'
+         '4b7ce9a0dcac988bf7f62b78b65808ef'
+         'b858a3836d380641011a016ac236a8b7'
+         '2628636bca962b13b23030168c430993')
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  cp $srcdir/config.h config.h
+  patch -Nlp1 dwm.c $srcdir/dwm-$pkgver-float_border_color2.diff
+  patch -Nlp1 dwm.c $srcdir/dwm-$pkgver-systray.diff
+  patch -Nlp1 dwm.c $srcdir/dwm-$pkgver-singularborders.diff
+  patch -Nlp1 dwm.c $srcdir/01-dwm-$pkgver-pango.diff
+  sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
+  sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
+  sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
+  sed -i 's/^LDFLAGS = -g/#LDFLAGS += -g/g' config.mk
+  sed -i 's/^#LDFLAGS = -s/LDFLAGS += -s/g' config.mk
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  make PREFIX=/usr DESTDIR=$pkgdir install
+  install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
+  install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
+}
