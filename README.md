@@ -43,5 +43,7 @@ This is much like the chromium-libpdf folder, but with less scripts.
 To-Do
 ========
 Add power management back into dwm.sh.
+
 Locate and add more config files.
+
 Create a dependency file.
