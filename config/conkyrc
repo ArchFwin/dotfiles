@@ -1,0 +1,11 @@
+out_to_console yes
+out_to_x no
+background no
+update_interval 0.5
+total_run_times 0
+use_spacer none
+use_xft yes
+xftfont Terminus:size=8
+
+TEXT
+↓${downspeedf wlo1} ↑${upspeedf wlo1} ${color blue}Vol:${exec "/home/andrew/scripts/alsa.sh"} Bat:${battery_short} ${battery_time} ${time %F %T} 

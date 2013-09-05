@@ -15,6 +15,10 @@ The cleanup script removes the downloaded rpms, the source package and the insta
 
 None of the scripts take any arguments or provide any help, they just run and produce what is hopefully the desired output.
 
+Imdb-thumbnailer
+========
+This is much like the chromium-libpdf folder, but with less scripts.
+
 Dwm
 ========
 
@@ -36,14 +40,10 @@ Scripts
 ========
 This contains a small selection of scripts I use that don't fit into one of the other categories.
 
-Imdb-thumbnailer
-========
-This is much like the chromium-libpdf folder, but with less scripts.
-
 To-Do
 ========
-Add power management back into dwm.sh.
-
 Locate and add more config files.
 
-Create a dependency file.
+Create a dependency file/list.
+
+Remove AUR packages from the installed packages list, and move to a seperate list.
