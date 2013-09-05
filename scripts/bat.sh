@@ -12,10 +12,10 @@ while true; do
 		;;
 	Discharging,)
 		bat=$(acpi -b | grep -oE "[[:digit:]]*%" | sed 's/%//g')
-		if [[ $bat < "100" && $war != "1" ]]; then
+		if [[ $bat < "10" && $war != "1" ]]; then
 			notify-send -a "Power Management" "Battery low" "Go fuck a duck."
 			let war=1
-		elif [[ $bat < "98" && $war2 != "1" ]]; then
+		elif [[ $bat < "5" && $war2 != "1" ]]; then
 			notify-send -a "Power Management" "Battery critical" "We're going down now."
 			let war2=1
 			sleep 10s
