@@ -8,4 +8,10 @@ use_xft yes
 xftfont Terminus:size=8
 
 TEXT
-↓${downspeedf wlo1} ↑${upspeedf wlo1} ${color blue}Vol:${exec "/home/andrew/scripts/alsa.sh"} Bat:${battery_short} ${battery_time} ${time %F %T} 
+^i(/home/andrew/bitmaps/wireless5.xbm) ↓${downspeedf wlo1} ↑${upspeedf wlo1} ^i(/home/andrew/bitmaps/cpu.xbm) ${entropy_perc}%/${memperc}%/${swapperc}%/${cpu cpu0}% ^i(/home/andrew/bitmaps/volume100.xbm) ${exec "/home/andrew/scripts/alsa.sh"} ^i(/home/andrew/bitmaps/battery.xbm) ${battery_short}${battery_time} ^i(/home/andrew/bitmaps/time.xbm) ${time %F %T} 
+
+Battery: ${battery_bar 10,30 BAT0}
+Entropy: ${entropy_bar 10,30} Cpu: ${cpubar 10,30 cpu0} 
+Memory: ${membar 10, 30} Swap ${swapbar 10,30}
+Root: ${fs_bar 10,30 /} Home: ${fs_bar 10,30 /home}
+Uptime: ${uptime} Unixtime: ${time %s}

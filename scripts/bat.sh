@@ -23,4 +23,5 @@ while true; do
 		fi
 		;;
 	esac
+	sleep 30s
 done

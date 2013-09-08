@@ -40,7 +40,6 @@ schedprompt
 
 #Aliases
 alias ls="ls --color=auto -A"
-alias pgrep="pgrep -l"
 alias update="yaourt -Syau"
 alias cp="cp -r --reflink=auto"
 alias fucking="sudo"

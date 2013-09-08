@@ -13,9 +13,9 @@ btrfs-progs
 bzip2
 ccache
 cdparanoia
-clamav
 claws-mail
 claws-mail-themes
+conky
 coreutils
 cpupower
 cronie
@@ -48,7 +48,6 @@ freetype2
 gawk
 gcc
 gcc-libs
-gdb
 gettext
 gimp
 git
@@ -58,6 +57,7 @@ gnome-icon-theme
 gnome-icon-theme-extras
 gnome-keyring
 gparted
+gpicview
 gptfdisk
 grep
 grub
@@ -77,14 +77,6 @@ imagemagick
 inetutils
 iputils
 jfsutils
-kdebase-dolphin
-kdebase-kdialog
-kdebase-konsole
-kdebase-kwrite
-kdebase-plasma
-kdemultimedia-kmix
-kdeplasma-addons-applets-icontasks
-kdeplasma-addons-applets-lancelot
 laptop-mode-tools
 less
 lib32-alsa-plugins
@@ -110,6 +102,7 @@ libtool
 libusb-compat
 libva-intel-driver
 licenses
+lightdm-gtk3-greeter
 linux
 linux-docs
 linux-headers
@@ -118,7 +111,21 @@ lshw
 lsof
 luakit
 lvm2
+lxappearance
+lxappearance-obconf
+lxde-common
+lxde-icon-theme
 lxdm
+lxinput
+lxlauncher
+lxmusic
+lxpanel
+lxpolkit
+lxrandr
+lxsession
+lxshortcut
+lxtask
+lxterminal
 lynx
 lzop
 m4
@@ -126,6 +133,7 @@ make
 man-db
 man-pages
 mdadm
+menu-cache
 midori
 mlocate
 most
@@ -138,6 +146,7 @@ netctl
 network-manager-applet
 npapi-sdk
 ntp
+openbox
 os-prober
 p7zip
 pacgraph
@@ -146,6 +155,7 @@ parted
 patch
 pavucontrol
 pciutils
+pcmanfm
 pcmciautils
 perl
 pidgin
@@ -153,7 +163,6 @@ pidgin-otr
 pkg-config
 pkgfile
 pkgstats
-polkit-gnome
 poppler-qt4
 ppp
 procps-ng
@@ -180,7 +189,6 @@ slock
 splix
 steam
 sudo
-synaptiks
 sysfsutils
 syslog-ng
 system-config-printer
@@ -208,7 +216,6 @@ ttf-liberation
 ttf-linux-libertine
 tumbler
 uget
-unetbootin
 unrar
 unzip
 usbutils

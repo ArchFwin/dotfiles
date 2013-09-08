@@ -17,6 +17,7 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	http://dwm.suckless.org/patches/dwm-$pkgver-float_border_color2.diff
 	http://dwm.suckless.org/patches/dwm-$pkgver-singularborders.diff
     https://raw.github.com/Unia/DWM/master/01-dwm-6.0-pango.diff
+	http://dwm.suckless.org/patches/dwm-6.0-emptyview.diff
 	dwm.desktop
 	config.h)
 md5sums=('db2b5124e811148e54c20293415c1cbb'
@@ -34,6 +35,7 @@ build() {
   patch -Nlp1 dwm.c $srcdir/dwm-$pkgver-systray.diff
   patch -Nlp1 dwm.c $srcdir/dwm-$pkgver-singularborders.diff
   patch -Nlp1 dwm.c $srcdir/01-dwm-$pkgver-pango.diff
+  patch -Nlp1 dwm.c $srcdir/dwm-$pkgver-emptyview.diff
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
   sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
   sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
