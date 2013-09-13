@@ -24,13 +24,13 @@ feh --bg-scale /home/andrew/Pictures/GITS_Laughing_Man_wall_02_by_pansejra.jpg
 fgcolour="#bbbbbb"
 bgcolour="#1a1a1a"
 font="xft:Terminus:size=8"
-dzenevents="entertitle=uncollapes;leaveslave=collapse;button1=togglestick;button4=scrollup;button5=scrolldown;key_Escape=exit"
+dzenevents="entertitle=uncollapse;leaveslave=collapse;leavetitle=collapse;button4=scrollup;button5=scrolldown;key_Escape=exit"
 xsetroot -name " "
-conky | dzen2 -e ${dzenevents}-l 5 -x "660" -h "13" -w "400" -ta r -fg ${fgcolour} -bg ${bgcolour} -fn ${font} -u &
+conky | dzen2 -e $dzenevents -l 5 -x "720" -h "13" -w "530" -ta c -fg $fgcolour -bg $bgcolour -fn $font -u &
 /home/andrew/scripts/redshift &
 
 #Automatic screen-lock and suspend
-xautolock -time 5 -locker "slock" -killer "systemctl suspend" -killtime 10 -detectsleep -secure&
+xautolock -time 5 -locker "slock" -killer "sleep 10s && systemctl suspend" -killtime 10 -detectsleep &
 
 #I like nm-applet to be as close to the time as possible. This helps ensure that happens.
 sleep 30s

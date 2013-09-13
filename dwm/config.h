@@ -36,7 +36,7 @@ static const Rule rules[] = {
 	{ "Libreoffice", NULL, NULL, 1<<4, True, -1},
 	{ "Gummi", 	   NULL, 	  NULL, 1<<4, False, -1},
 	{ "luakit", NULL, NULL, 1<<0, False, -1},
-	{ "Spotify", NULL, NULL, 1<<6, False, -1},
+	{ "Spotify", NULL, NULL, 1<<5, False, -1},
 	{ "feh", NULL, NULL, 0, True, -1},
 };
 
