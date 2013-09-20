@@ -5,13 +5,8 @@ update_interval 0.5
 total_run_times 0
 use_spacer none
 use_xft yes
+if_up_strictness address
 xftfont Terminus:size=8
 
 TEXT
-^i(/home/andrew/bitmaps/wireless5.xbm) ↓${downspeedf wlo1} ↑${upspeedf wlo1} ^i(/home/andrew/bitmaps/cpu.xbm) ${memperc}%/${swapperc}%/${cpu cpu0}% ^i(/home/andrew/bitmaps/volume100.xbm) ${exec "/home/andrew/scripts/alsa.sh"} ^i(/home/andrew/bitmaps/battery.xbm) ${battery_short}${battery_time} ^i(/home/andrew/bitmaps/time.xbm) ${time %F %T} 
-
-Battery: ${battery_bar 10,30 BAT0}
-Cpu: ${cpubar 10,30 cpu0} 
-Memory: ${membar 10, 30} Swap ${swapbar 10,30}
-Root: ${fs_bar 10,30 /} Home: ${fs_bar 10,30 /home}
-Uptime: ${uptime} Unixtime: ${time %s}
+${if_up wlo1} ↓${downspeedf wlo1} ↑${upspeedf wlo1} ${else} Disconnected ${endif}${memperc}% ${swapperc}% ${cpu cpu1}% ${cpu cpu2}% ${exec "/home/andrew/scripts/alsa.sh"} ⚡ ${battery_short}${battery_time} ${time %F %T} 
