@@ -1,0 +1,10 @@
+#!/bin/sh
+/usr/bin/reflector -n 100 -a 3 -f 5 --sort rate --save /etc/pacman.d/mirrorlist
+su -s /bin/bash -c '/usr/bin/pkgstats -q' nobody
+pacman -Qenq > /home/andrew/pkglist
+btrfs scrub start /dev/sda2
+btrfs scrub start /dev/sda4
+bedup dedup
+abs
+sleep 30m
+notify-send "Cron-Weekly tasks done""Mirrors updated, package stats submitted and installed packages list generated. Run yaourt -Syyau at the next convienient oportunity."

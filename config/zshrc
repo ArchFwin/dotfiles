@@ -47,6 +47,7 @@ alias rm="rm -r"
 #Environment Variables
 export EDITOR="vim"
 export PAGER="most"
+
 #File Extraction
 ex()
 {
@@ -71,12 +72,21 @@ ex()
 		echo "'$1' is not a valid file"
 	fi
 }
-#Go function. For when you want to go somewhere else and see what's there.
+
 go()
 {
 	cd "$1" || return 1;
 	ls;
 }
+
+#Screenlock Pause
+lock()
+{
+	xautolock -disable
+	sleep $1
+	xautolock -enable
+}
+
 #Key Bindings
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
