@@ -2,7 +2,7 @@
 /* This is just a test */
 /* appearance */
 /* static const char font[]            = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"; */
-static const char font[]			= "Terminus 8";
+static const char font[]			= "Fira Mono 8";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#1a1a1a";
 static const char normfgcolor[]     = "#bbbbbb";

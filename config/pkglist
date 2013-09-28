@@ -25,7 +25,9 @@ dnsutils
 dosfstools
 dunst
 dwm
+dzen2
 e2fsprogs
+evince
 exfat-utils
 fakeroot
 fbv
@@ -100,7 +102,6 @@ mtpaint
 mtpfs
 namcap
 netctl
-network-manager-applet
 ntfs-3g
 ntp
 os-prober
@@ -141,7 +142,6 @@ tar
 terminus-font
 texlive-latexextra
 thunar
-thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman
 tk
@@ -176,6 +176,5 @@ xorg-xev
 xorg-xfontsel
 xorg-xinit
 xorg-xprop
-zathura-pdf-poppler
 zip
 zsh

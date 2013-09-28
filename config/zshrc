@@ -43,7 +43,7 @@ alias ls="ls --color=auto -A"
 alias update="yaourt -Syau"
 alias cp="cp -r --reflink=auto"
 alias fucking="sudo"
-alias rm="rm -r"
+alias rm="rm -Ri"
 #Environment Variables
 export EDITOR="vim"
 export PAGER="most"
@@ -80,7 +80,7 @@ go()
 }
 
 #Screenlock Pause
-lock()
+pause()
 {
 	xautolock -disable
 	sleep $1

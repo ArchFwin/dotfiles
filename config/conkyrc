@@ -9,4 +9,4 @@ if_up_strictness address
 xftfont Terminus:size=8
 
 TEXT
-${if_up enp3s0} ↓${downspeed enp3s0} ↑${upspeedf enp3s0}${else}${endif}${if_up wlo1} ↓${downspeedf wlo1} ↑${upspeedf wlo1} ${else} Disconnected ${endif}${memperc}% ${swapperc}% ${cpu cpu1}% ${cpu cpu2}% ${exec "/home/andrew/scripts/alsa.sh"} ⚡ ${battery_short}${battery_time} ${time %F %T} 
+${if_up enp3s0} ↓${downspeed enp3s0} ↑${upspeedf enp3s0}${else}${endif}${if_up wlo1} ^ca(1,gksudo systemctl restart netctl-auto@wlo1.service)↓${downspeedf wlo1} ↑${upspeedf wlo1} ^ca()${else}  ^ca(1,gksudo systemctl restart netctl-auto@wlo1.service)Disconnected ^ca()${endif}${memperc}% ${swapperc}% ${cpu cpu1}% ${cpu cpu2}% ${exec "/home/andrew/scripts/alsa.sh"} ⚡ ${battery_short}${battery_time} ${time %F %T} 
