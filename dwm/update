@@ -1,8 +1,0 @@
-#!/bin/sh
-echo -e "\e[1;32m==>\e[0m Updating checksums"
-updpkgsums
-echo -e "\e[1;32m==>\e[0m Building package"
-makepkg -i
-echo -e "\e[1;32m==>\e[0m Removing built package"
-rm -v *.xz
-echo -e "\e[1;32m==>\e[0m Done"

@@ -43,10 +43,11 @@ alias ls="ls --color=auto -A"
 alias update="yaourt -Syau"
 alias cp="cp -r --reflink=auto"
 alias fucking="sudo"
-alias rm="rm -Ri"
+alias rm="rm -R"
 #Environment Variables
 export EDITOR="vim"
 export PAGER="most"
+export GPGKEY="F1D248BC"
 
 #File Extraction
 ex()
