@@ -44,7 +44,7 @@ if [[ -d $HOME/.config/autostart ]]; then
 	unset n
 fi &
 
-btpd -p 6161 --max-peers 120 --bw-out 300 --bw-in 1000 --ip 8.8.8.8 --max-uploads -1 &
+btpd -p 6161 --max-peers 120 --bw-out 300 --bw-in 1000 --ip 8.8.8.8 --max-uploads -1
 pidgin &
 claws-mail &
 dropboxd &
@@ -71,10 +71,10 @@ bgcolour="#1a1a1a"
 font="xft:Fira Mono:size=8"
 dzevents="key_Escape=exit;sigusr1=raise;sigusr2=lower;"
 xsetroot -name " "
-conky -c .conkyrcdzen | dzen2 -x "674" -h "13" -w "600" -ta r -fg ${fgcolour} -bg ${bgcolour} -fn ${font} -e ${dzevents} &
+conky -c .conkyrcdzen | dzen2 -x "524" -h "13" -w "750" -ta r -fg "${fgcolour}" -bg "${bgcolour}" -fn "${font}" -e "${dzevents}" &
 
 #Dzen starts before dwm, so this is used to make dzen go over the dwm bar
-#sleep 10s && kill -USR1 `pgrep dzen` &
+sleep 10s && kill -USR1 `pgrep dzen` &
 
 #Starts last so script exits on dwm exit
 dwm

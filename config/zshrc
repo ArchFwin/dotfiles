@@ -44,6 +44,10 @@ alias update="yaourt -Syau"
 alias cp="cp -r --reflink=auto"
 alias fucking="sudo"
 alias rm="rm -R"
+alias ...="../../"
+alias ....="../../../"
+alias .....="../../../../"
+
 #Environment Variables
 export EDITOR="vim"
 export PAGER="most"
