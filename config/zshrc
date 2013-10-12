@@ -15,7 +15,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory autocd nomatch notify
+setopt appendhistory autocd nomatch notify prompt_subst
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
@@ -24,9 +24,13 @@ autoload -U promptinit
 promptinit
 autoload -U colors
 colors
+
+source /usr/share/git/completion/git-prompt.sh
 #Prompt with plenty of colour, and accurate time.
-PROMPT="[$fg[blue]%* $fg[green]%n $fg[yellow]%m$fg[red]%(?.. %?)$reset_color %~] 
-⇀  " 
+PROMPT='[$fg[blue]%* $fg[green]%n $fg[yellow]%m$fg[red]%(?.. %?)$fg[cyan]$(__git_ps1 " %s") %{$reset_color%}%~]
+⇀  '
+
+
 schedprompt(){
 	emulate -L zsh
 	zmodload -i zsh/sched
@@ -47,6 +51,7 @@ alias rm="rm -R"
 alias ...="../../"
 alias ....="../../../"
 alias .....="../../../../"
+alias mpv="mpv --save-position-on-quit --autosub --autosub-match=fuzzy --stop-screensaver"
 
 #Environment Variables
 export EDITOR="vim"
