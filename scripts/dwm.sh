@@ -44,11 +44,11 @@ if [[ -d $HOME/.config/autostart ]]; then
 	unset n
 fi &
 
-btpd -p 6161 --max-peers 120 --bw-out 300 --bw-in 1000 --ip 8.8.8.8 --max-uploads -1
 pidgin &
 claws-mail &
 dropboxd &
 SpiderOak &
+transmission-gtk -m &
 
 #Power Management Script
 /home/andrew/scripts/bat.sh &
@@ -57,7 +57,7 @@ SpiderOak &
 setxkbmap gb
 # http://i.imgur.com/U9QgGDY.jpg
 feh --bg-scale /home/andrew/Pictures/city.jpg
-/home/andrew/scripts/redshift &
+/home/andrew/Scripts/redshift &
 
 #Automatic screen-lock and suspend
 xautolock -time 5 -locker "slock" -killer "systemctl suspend" -killtime 10 -detectsleep &

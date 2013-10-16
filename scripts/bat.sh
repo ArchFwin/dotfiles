@@ -1,6 +1,6 @@
 #!/bin/sh
-batt=$(acpi -b | cut -d " " -f 3)
 while true; do
+	batt=$(acpi -b | cut -d " " -f 3)
 	case $batt in
 	Full,*)
 		let war=0
