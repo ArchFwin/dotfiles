@@ -1,0 +1,4 @@
+#! /bin/sh
+echo -e "\e[1;32m==>\e[0m Cleaning up build folder"
+rm -v *.src.tar.gz *.pkg.tar.xz *.tar
+echo -e "\e[1;32m==>\e[0m Done"
