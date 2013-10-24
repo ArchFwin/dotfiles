@@ -26,20 +26,8 @@ autoload -U colors
 colors
 
 #Prompt with plenty of colour, and accurate time.
-PROMPT='[$fg[blue]%* $fg[green]%n $fg[yellow]%m$fg[red]%(?.. %?) %{$reset_color%}%~]
+PROMPT='[$fg[blue]%n $fg[yellow]%m$fg[red]%(?.. %?) $reset_color%~ ]
 ⇀  '
-
-
-schedprompt(){
-	emulate -L zsh
-	zmodload -i zsh/sched
-	integer i=${"${(@)zsh_sheduled_events#*:*:}"[(I)schedprompt]}
-	(( i )) && sched -$i
-	zle && zle reset-prompt
-	sched +1 schedprompt
-}
-
-schedprompt
 
 #Aliases
 alias ls="ls --color=auto -A"

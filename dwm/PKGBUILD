@@ -25,10 +25,11 @@ md5sums=('db2b5124e811148e54c20293415c1cbb'
          'c83cda9b739cdc25d5960576a24027f1'
          '8dfaad549eedb2f7965bf49e91fe218f'
          '4b7ce9a0dcac988bf7f62b78b65808ef'
+         '642a7f40ca61702e56458b69c6a92bcb'
          'b858a3836d380641011a016ac236a8b7'
-         '2628636bca962b13b23030168c430993')
+         '74ea40780f68e2200d7184ee92f1178a')
 
-build() {
+prepare() {
   cd $srcdir/$pkgname-$pkgver
   cp $srcdir/config.h config.h
   patch -Nlp1 dwm.c $srcdir/dwm-$pkgver-float_border_color2.diff
@@ -41,6 +42,10 @@ build() {
   sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
   sed -i 's/^LDFLAGS = -g/#LDFLAGS += -g/g' config.mk
   sed -i 's/^#LDFLAGS = -s/LDFLAGS += -s/g' config.mk
+}
+
+build(){
+  cd $srcdir/$pkgname-$pkgver
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 

@@ -3,7 +3,7 @@
 
 pkgname="chromium-libpdf"
 #The pkgver is the same as for google chrome dev. The library isn't meant to be distributed on its own so no other version information exists.
-pkgver="31.0.1650.4"
+pkgver="32.0.1671.3"
 pkgrel="1"
 pkgdesc="A PDF Viewer for Chromium and Chromium based browsers"
 url="http://wiki.archlinux.org/index.php/Chromium#libpdf.so"
@@ -14,19 +14,19 @@ optdepends=("chromium: default browser to use plugin in"
 			"chromium-dev: development version of default browser, requires modifying the PKGBUILD"
 			"iron-bin: alternate google-chrome based browser, requires modifying the PKGBUILD")
 sha512sums=("2d09d2ca3c960f38463ed742a2f038e919363fe2cb8d65d86cd4672559b44369037d94f9a09ede478fadd20b4a6dc9271e8d1af1f2cc2bc92ed90d0a4810ac67")
-source=(LICENSE)
+source=("LICENSE")
 if [ "$CARCH" = "i686" ]; then
 	source+=("https://dl.google.com/linux/direct/google-chrome-unstable_current_i386.rpm")
-    sha512sums+=("4d649a6ca8d3d4354696fe5bc586e2de4134e12dd782e3e376edc95d623efba72cc1eddad90e7f00ed0206560d7e066b16faa28ca7effd957be4e2d4354e705f")
+    sha512sums+=("3c392d8db51c1725bb89851dfa410007c62b5fb97b915bb10b0eb19f742c837940e3e455c8d385c9289e36071f6ca293e4361c835396f117b700c5203f63c5f0")
 elif [ "$CARCH" = "x86_64" ]; then
 	source+=("https://dl.google.com/linux/direct/google-chrome-unstable_current_x86_64.rpm")
-	sha512sums+=("5a80d2ed9da84f0e65545c8a6cda7d2a724591c52ef73cc6ed6920f95431e1f05a4da26258aa2d31856376512078f4a98f2b1326642adc9a5a8c3077effa31a4")
+	sha512sums+=("b70c3d55eae93dbce51ced0e185c670b787c41a8f485714046b239230961a0bc1c99a9b8dcf0a292d01988c0b058de9b5a16699cb705e3af10758af6131df2ad")
 fi
 
 package(){
 	#Uncomment the relevant line below to install the library in the correct place if you're running something other than chromium.
 
-	#chromium (Default)
+	#chromium
 	install -Dm755 "$srcdir/opt/google/chrome/libpdf.so" "$pkgdir/usr/lib/chromium/libpdf.so"
 
     #chromium-dev

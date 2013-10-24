@@ -13,11 +13,18 @@ if [[ -d /etc/X11/xinit/xinitrc.d ]]; then
 fi &
 
 #Xdg Autostart Compliance
+<<<<<<< HEAD
 #It's unlikely that a .desktop file will mention dwm, so the possibility is ignored.
+=======
+>>>>>>> 54557b780ce9ca0e73a607b0b54bbfd8b1048361
 if [[ -d /etc/xdg/autostart ]]; then
 	for y in /etc/xdg/autostart/*; do
 		x=$(cat $y)
 		case $x in
+<<<<<<< HEAD
+=======
+		#It's unlikely that a .desktop file will mention dwm, so the possibility is ignored.
+>>>>>>> 54557b780ce9ca0e73a607b0b54bbfd8b1048361
 		*OnlyShowIn*)
 			;;
 		*)
@@ -27,7 +34,11 @@ if [[ -d /etc/xdg/autostart ]]; then
 		unset x
 	done
 	unset y
+<<<<<<< HEAD
 fi
+=======
+fi &
+>>>>>>> 54557b780ce9ca0e73a607b0b54bbfd8b1048361
 #Separated to prevent failure if one of the two directories doesn't exist
 if [[ -d $HOME/.config/autostart ]]; then
 	for n in $HOME/.config/autostart/*; do
@@ -42,6 +53,7 @@ if [[ -d $HOME/.config/autostart ]]; then
 		unset m
 	done
 	unset n
+<<<<<<< HEAD
 fi
 
 #Autostart section to allow multiple .desktop files to use same script
@@ -52,6 +64,15 @@ if [[ "$1" != "clean" ]]; then
 	SpiderOak &
 	transmission-gtk -m &
 fi
+=======
+fi &
+
+pidgin &
+claws-mail &
+dropboxd &
+SpiderOak &
+transmission-gtk -m &
+>>>>>>> 54557b780ce9ca0e73a607b0b54bbfd8b1048361
 
 #Power Management Script
 $HOME/scripts/bat.sh &
@@ -60,6 +81,7 @@ $HOME/scripts/bat.sh &
 setxkbmap gb
 # http://i.imgur.com/U9QgGDY.jpg
 feh --bg-scale /home/andrew/Pictures/city.jpg
+<<<<<<< HEAD
 $HOME/Scripts/redshift &
 
 #Things that need to run in all sessions
@@ -68,6 +90,9 @@ export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 
 #Only start nm-applet if network-manager is running
 [[ `pgrep NetworkManager` ]] && nm-applet &
+=======
+/home/andrew/Scripts/redshift &
+>>>>>>> 54557b780ce9ca0e73a607b0b54bbfd8b1048361
 
 #Automatic screen-lock and suspend
 xautolock -time 5 -locker "slock" -killer "systemctl suspend" -killtime 10 -detectsleep &

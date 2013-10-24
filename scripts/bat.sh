@@ -1,16 +1,16 @@
 #!/bin/sh
-batt=$(acpi -b | cut -d " " -f 3)
 while true; do
+	batt=$(acpi -b | cut -d " " -f 3)
 	case $batt in
-	Full,)
+	Full,*)
 		let war=0
 		let war2=0
 		;;
-	Charging,)
+	Charging,*)
 		let war=0
 		let war2=0
 		;;
-	Discharging,)
+	Discharging,*)
 		bat=$(acpi -b | grep -oE "[[:digit:]]*%" | sed 's/%//g')
 		if [[ $bat < "10" && $war != "1" ]]; then
 			notify-send -a "Power Management" "Battery low" "Go fuck a duck."

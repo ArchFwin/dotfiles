@@ -54,15 +54,13 @@ if [[ "$1" != "clean" ]]; then
 fi
 
 #Power Management Script
-$HOME/scripts/bat.sh &
+$HOME/Scripts/bat.sh &
 
 #Configuration Section
 setxkbmap gb
 # http://i.imgur.com/U9QgGDY.jpg
 feh --bg-scale /home/andrew/Pictures/city.jpg
 $HOME/Scripts/redshift &
-
-#Things that need to run in all sessions
 gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh &
 export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 
