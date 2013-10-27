@@ -1,10 +1,10 @@
 btsync
-burg-bios-bzr
-burg-themes
 chromium-libpdf
 dropbox
 imdb-thumbnailer
 libvdpau-va-gl
+linux-bfs
+linux-bfs-headers
 mediterraneannight-theme
 mozplugger
 npapi-vlc
@@ -14,7 +14,6 @@ pipelight
 samsung-unified-driver
 spideroak
 spotify
-sublime-text
 tlp
 ttf-fira-mono
 ttf-fira-sans

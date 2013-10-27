@@ -4,17 +4,17 @@
 
 static const char font[]					= "Fira Mono 8";
 static const char normbordercolor[]			= "#444444";
-static const char normbgcolor[]				= "#1a1a1a";
+static const char normbgcolor[]				= "#272822";
 static const char normfgcolor[]				= "#bbbbbb";
 static const char selbordercolor[]			= "#057cfc";
-static const char selbgcolor[]				= "#1a1a1a";
+static const char selbgcolor[]				= "#272822";
 static const char selfgcolor[]				= "#0AA6CF";
 static const char floatnormbordercolor[]	= "#1f1f1f";
 static const char floatselbordercolor[]		= "#005577";
 static const unsigned int borderpx			= 1;	/* border pixel of windows */
 static const unsigned int snap				= 64;	/* snap pixel */
 static const unsigned int systrayspacing	= 2;	/* Systray Spacing*/
-static const Bool showsystray				= True;
+static const Bool showsystray				= True; /* False means no system tray */
 static const Bool showbar					= True;	/* False means no bar */
 static const Bool topbar					= True;	/* False means bottom bar */
 
@@ -36,7 +36,7 @@ static const Rule rules[] = {
 	{	"Libreoffice",					NULL,			NULL,		1<<4,			True,			-1	},
 	{	"Gummi", 						NULL,			NULL,		1<<5,			False,			-1	},
 	{	"Sublime_text",					NULL,			NULL,		1<<5,			False,			-1	},
-	{	"Mousepad",						NULL,			NULL,		1<<5,			False,			-1	},
+	{	"Gedit",						NULL,			NULL,		1<<5,			False,			-1	},
 	{	"Spotify",						NULL,			NULL,		1<<3,			False,			-1	},
 	{	"feh",							NULL,			NULL,		0,				True,			-1	},
 	{	"mpv",							NULL,			NULL,		0,				True,			-1	},
@@ -44,7 +44,7 @@ static const Rule rules[] = {
 
 /* layout(s) */
 
-static const float mfact		= 0.6;	/* factor of master area size [0.05..0.95] */
+static const float mfact		= 0.55;	/* factor of master area size [0.05..0.95] */
 static const int nmaster		= 1;	/* number of clients in master area */
 static const Bool resizehints	= True;	/* True means respect size hints in tiled resizing */
 

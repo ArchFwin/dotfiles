@@ -5,11 +5,10 @@ alsa-utils
 aspell-en
 autoconf
 automake
-binutils
 bison
 btrfs-progs
 bzip2
-bzr
+cabextract
 ccache
 claws-mail
 claws-mail-themes
@@ -44,15 +43,12 @@ firefox-i18n-en-gb
 flashplugin
 flex
 gawk
-gcc
-gcc-libs
-gettext
 gimp
 git
 gksu
+gnome-keyring
 gptfdisk
 grep
-groff
 gstreamer0.10-base-plugins
 gstreamer0.10-good-plugins
 gstreamer0.10-ugly-plugins
@@ -103,11 +99,9 @@ mdadm
 mlocate
 most
 mousepad
-mplayer
 mpv
 mtpaint
 mtpfs
-mupdf
 namcap
 nano
 netctl
@@ -137,6 +131,7 @@ reflector
 reiserfsprogs
 rsync
 sakura
+screenfetch
 sed
 shadow
 slock
@@ -149,7 +144,6 @@ system-config-printer
 systemd-sysvcompat
 tar
 terminus-font
-texinfo
 texlive-latexextra
 thunar
 thunar-media-tags-plugin

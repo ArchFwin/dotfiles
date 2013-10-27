@@ -26,7 +26,7 @@ autoload -U colors
 colors
 
 #Prompt with plenty of colour, and accurate time.
-PROMPT='[$fg[blue]%n $fg[yellow]%m$fg[red]%(?.. %?) $reset_color%~ ]
+PROMPT='[ $fg[blue]%n $fg[yellow]%m$fg[red]%(?.. %?) $reset_color%~ ]
 ⇀  '
 
 #Aliases
@@ -39,11 +39,10 @@ alias ...="../../"
 alias ....="../../../"
 alias .....="../../../../"
 alias mpv="mpv --save-position-on-quit --autosub --autosub-match=fuzzy --stop-screensaver"
+alias die="systemctl poweroff"
 
 #Environment Variables
 export EDITOR="vim"
-export PAGER="most"
-export GPGKEY="F1D248BC"
 
 #File Extraction
 ex()
@@ -70,6 +69,7 @@ ex()
 	fi
 }
 
+#Go to a directory and show all the shit there
 go()
 {
 	cd "$1" || return 1;
