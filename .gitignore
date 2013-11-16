@@ -1,3 +1,2 @@
-.SyncID
-.SyncIgnore
-.SyncArchive/
+.*
+!/.gitignore

@@ -5,22 +5,22 @@
 static const char font[]					= "Fira Mono 8";
 static const char normbordercolor[]			= "#444444";
 static const char normbgcolor[]				= "#272822";
-static const char normfgcolor[]				= "#bbbbbb";
+static const char normfgcolor[]				= "#f8f8f2";
 static const char selbordercolor[]			= "#057cfc";
 static const char selbgcolor[]				= "#272822";
 static const char selfgcolor[]				= "#0AA6CF";
 static const char floatnormbordercolor[]	= "#1f1f1f";
 static const char floatselbordercolor[]		= "#005577";
-static const unsigned int borderpx			= 1;	/* border pixel of windows */
-static const unsigned int snap				= 64;	/* snap pixel */
-static const unsigned int systrayspacing	= 2;	/* Systray Spacing*/
-static const Bool showsystray				= True; /* False means no system tray */
-static const Bool showbar					= True;	/* False means no bar */
-static const Bool topbar					= True;	/* False means bottom bar */
+static const unsigned int borderpx			= 1;				/* border pixel of windows */
+static const unsigned int snap				= 64;				/* snap pixel */
+static const unsigned int systrayspacing	= 4;				/* Systray Spacing*/
+static const Bool showsystray				= True;				/* False means no system tray */
+static const Bool showbar					= True;				/* False means no bar */
+static const Bool topbar					= True;				/* False means bottom bar */
 
 /* tagging */
 
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8" };
+static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII" };
 
 static const Rule rules[] = {
 	/*	class							instance		title		tagsmask		isfloating?		monitor	*/
@@ -33,6 +33,7 @@ static const Rule rules[] = {
 	{	"libreoffice-startcenter",		NULL,			NULL,		1<<4,			False,			-1	},
 	{	"libreoffice-calc",				NULL,			NULL,		1<<4,			False,			-1	},
 	{	"libreoffice-impress",			NULL,			NULL,		1<<4,			False,			-1	},
+	{	NULL,							NULL,			"LibreOffice", 	1<<4,		True,			-1	},
 	{	"Libreoffice",					NULL,			NULL,		1<<4,			True,			-1	},
 	{	"Gummi", 						NULL,			NULL,		1<<5,			False,			-1	},
 	{	"Sublime_text",					NULL,			NULL,		1<<5,			False,			-1	},

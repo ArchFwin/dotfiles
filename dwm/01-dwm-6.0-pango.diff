@@ -215,15 +215,6 @@
  	configure(c); /* propagates border_width, if size doesn't change */
  	updatewindowtype(c);
  	updatesizehints(c);
-@@ -1647,7 +1637,7 @@ setup(void) {
- 	initfont(font);
- 	sw = DisplayWidth(dpy, screen);
- 	sh = DisplayHeight(dpy, screen);
--	bh = dc.h = dc.font.height + 2;
-+	bh = dc.h = dc.font.height + 1;
- 	updategeom();
- 	/* init atoms */
- 	wmatom[WMProtocols] = XInternAtom(dpy, "WM_PROTOCOLS", False);
 @@ -1675,8 +1665,6 @@ setup(void) {
  	dc.drawable = XCreatePixmap(dpy, root, DisplayWidth(dpy, screen), bh, DefaultDepth(dpy, screen));
  	dc.gc = XCreateGC(dpy, root, 0, NULL);

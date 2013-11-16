@@ -124,7 +124,7 @@
     browser = /usr/bin/firefox -new-tab
 
 [frame]
-    width = 2
+    width = 1
     color = "#0aa6cf"
 
 [shortcuts]
@@ -154,7 +154,7 @@
     timeout = 10
 
 [urgency_normal]
-    background = "#272822"
+    background = "#363636"
     foreground = "#0AA6CF"
     timeout = 10
 
