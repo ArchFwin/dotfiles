@@ -40,6 +40,7 @@ ffmpegthumbnailer
 file
 filesystem
 findutils
+flashplugin
 flex
 gawk
 gdb
@@ -85,12 +86,14 @@ libreoffice-writer
 libsynaptics
 libtool
 libva-intel-driver
+libvdpau-va-gl
 licenses
 linux
 logrotate
 lshw
 lsof
 lvm2
+lxappearance
 lxdm
 lxpolkit
 lxrandr
@@ -126,7 +129,6 @@ php-apache
 php-pear
 pidgin
 pidgin-otr
-pinta
 pkg-config
 pkgfile
 pkgstats
