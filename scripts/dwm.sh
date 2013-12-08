@@ -2,16 +2,23 @@
 #Maintainer = Andrew Webley <UnsuspectingHero@gmail.com>
 #DWM startup script
 
-#All program lines should end in an & except the last one. Any lines without a & cause issues (until the offending program is killed/exits, nothing else runs).
+# Base autostart array.
+# http://www.wallsave.com/wallpapers/1920x1080/cyber-punk/1149403/cyber-punk-tattoos-women-cyberpunk-barcode-artwork-1149403.jpg
+autostart=( '$HOME/Scripts/bat.sh'
+			'setxkbmap -layout gb -option terminate:ctrl_alt_bksp -option compose:menu'
+			'feh --bg-scale $HOME/Pictures/cyber.jpg'
+			'$HOME/Scripts/redshift'
+			'gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh'
+			'xautolock -time 5 -locker "slock" -killer "systemctl suspend" -killtime 10 -detectsleep'
+			'xrdb -merge "$HOME"/.Xresources'
+			'xsetroot -name " "')
 
-#Include various options set in the ~/.Xresources file
-xrdb -merge "$HOME"/.Xresources &
 
-# Start system autostart files/scripts if they exist
+# Add system autostart files/scripts if they exist
 
 if [[ -d /etc/X11/xinit/xinitrc.d ]]; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
-    [[ -x "$f" ]] && . "$f" &
+    autostart+=("$f")
   done
   unset f
 fi
@@ -25,8 +32,7 @@ if [[ -d /etc/xdg/autostart ]]; then
 			#Similarly, ain't no-one putting "NotShowIn=dwm" in a .desktop file. Hence, both cases are ignored.
 			;;
 		*)
-			#Desktop file parsing.
-			sh -c "$(echo "$x" | grep -m 1 "Exec=" | sed 's/Exec=//g')" &
+			autostart+=("$(echo "$x" | grep -m 1 "Exec=" | sed 's/Exec=//g')")
 			;;
 		esac
 	done
@@ -34,16 +40,19 @@ if [[ -d /etc/xdg/autostart ]]; then
 	unset x
 fi
 
-#Default empty autostart for clean
-autostart=('')
+export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK &
 
 #Add items to autostart for full only
-[[ "$1" = "full" ]] && autostart +=('firefox-ux' 'spotify' 'sakura')
+[[ "$1" = "full" ]] && autostart+=(	'firefox-ux'
+									'spotify'
+									'sakura')
 
-#partial/full autostart loop
+#partial/full autostart additions
 if [[ "$1" = "partial" || "$1" = "full" ]]; then
 	#Autostart items in full and partial
-	autostart+=('pidgin' 'claws-mail' 'transmission-gtk -m')
+	autostart+=('pidgin'
+				'thunderbird'
+				'transmission-gtk -m')
 	#Secondary autostart directory, nothing important started here so okay to skip in clean for minimal session
 	if [[ -d $HOME/.config/autostart ]]; then
 		for n in $HOME/.config/autostart/*; do
@@ -52,34 +61,19 @@ if [[ "$1" = "partial" || "$1" = "full" ]]; then
 			*OnlyShowIn*)
 				;;
 			*)
-					sh -c "$(echo "$m" | grep -m 1 "Exec=" | sed 's/Exec=//g')" &
+				autostart+=("$(echo "$m" | grep -m 1 "Exec=" | sed 's/Exec=//g')")
 				;;
 			esac
 		done
 		unset n
 		unset m
 	fi
-	#Runs everything in the autostart array
-	for x in "${autostart[@]}"; do
-		$x &
-	done
+fi
 
-#Power Management Script
-$HOME/Scripts/bat.sh &
-
-#Configuration Section
-setxkbmap -layout gb -option terminate:ctrl_alt_bksp -option compose:menu
-# http://i.imgur.com/U9QgGDY.jpg
-feh --bg-scale $HOME/Pictures/city.jpg
-$HOME/Scripts/redshift &
-gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh &
-export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
-
-#Automatic screen-lock and suspend
-xautolock -time 5 -locker "slock" -killer "systemctl suspend" -killtime 10 -detectsleep &
-
-#Dzen is set to be slightly further left than the end of the systray. This simply hides ``dwm-6.0'' from view.
-xsetroot -name " "
+#Runs everything in the autostart array simultaneously. Nothing should block startup.
+for x in "${autostart[@]}"; do
+	eval "$x" &
+done
 
 #dzen2 status bar
 fgcolour="#0AA6CF"

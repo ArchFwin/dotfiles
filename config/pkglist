@@ -77,7 +77,9 @@ lib32-intel-dri
 lib32-libcanberra-pulse
 lib32-libjpeg-turbo
 lib32-libpng
+lib32-mpg123
 libdvdcss
+libgdata
 libreoffice-calc
 libreoffice-en-GB
 libreoffice-gnome
@@ -108,6 +110,7 @@ man-pages
 mariadb
 mdadm
 mlocate
+mono
 most
 mpv
 mtpaint
@@ -160,6 +163,8 @@ texlive-latexextra
 thunar
 thunar-media-tags-plugin
 thunar-volman
+thunderbird
+thunderbird-i18n-en-gb
 tk
 transmission-cli
 transmission-gtk
@@ -182,6 +187,7 @@ webkitgtk2
 wget
 which
 whois
+wine_gecko
 wireless_tools
 wireshark-gtk
 wpa_actiond

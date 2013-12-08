@@ -1,4 +1,6 @@
 #!/bin/sh
+echo -e "\e[1;32m==>\e[1;37m Updating Package version"
+sed -i "6s/pkgver=\"[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\"/pkgver=\"$1\"/" PKGBUILD
 echo -e "\e[1;32m==>\e[1;37m Downloading x86_64 version"
 curl -fLC -  --retry 3 --retry-delay 3 -o google-chrome-unstable_current_x86_64.rpm "https://dl.google.com/linux/direct/google-chrome-unstable_current_x86_64.rpm"
 echo -e "\e[1;32m==>\e[1;37m Downloading i386 version"
@@ -18,4 +20,15 @@ else
     license=$(echo "$new" | cut -d " " -f 1)
 	sed -i "16s/sha512sums=(\"[A-Z,a-z,0-9]*\")/sha512sums+=(\"$license\")/" PKGBUILD
 fi
+echo -e "\e[1;32m==>\e[1;37m Building package"
+makepkg
+echo -e "\e[1;32m==>\e[1;37m Building source package"
+makepkg --source
+echo -e "\e[1;32m==>\e[1;37m Displaying package contents"
+tar -tvf *.pkg.tar.xz
+echo -e "\e[1;32m==>\e[1;37m Running namcap on PKGBUILD"
+namcap PKGBUILD
+echo -e "\e[1;32m==>\e[1;37m Running namcap on built package"
+namcap *.pkg.tar.xz
 echo -e "\e[1;32m==>\e[1;37m Done"
+
