@@ -12,8 +12,6 @@ bzip2
 cabextract
 calibre
 ccache
-claws-mail
-claws-mail-themes
 conky
 coreutils
 cpupower
@@ -36,6 +34,7 @@ exfat-utils
 faenza-icon-theme
 fakeroot
 feh
+ffmpeg-compat
 ffmpegthumbnailer
 file
 filesystem
@@ -50,6 +49,7 @@ gimp
 git
 gksu
 gnome-keyring
+gnuplot
 gparted
 gpointing-device-settings
 gptfdisk
@@ -67,6 +67,7 @@ hunspell-en
 hwinfo
 imagemagick
 inetutils
+inkscape
 iproute2
 iputils
 jfsutils
@@ -117,10 +118,12 @@ mtpaint
 mtpfs
 namcap
 nano
+net-tools
 netctl
 network-manager-applet
 ntfs-3g
 ntp
+octave
 os-prober
 p7zip
 pacman
@@ -138,6 +141,7 @@ pkgstats
 procps-ng
 progsreiserfs
 psmisc
+pstoedit
 pulseaudio
 pulseaudio-alsa
 python-markdown
@@ -188,6 +192,7 @@ wget
 which
 whois
 wine_gecko
+winetricks
 wireless_tools
 wireshark-gtk
 wpa_actiond
