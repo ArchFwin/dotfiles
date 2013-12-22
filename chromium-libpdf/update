@@ -1,15 +1,19 @@
 #!/bin/sh
 echo -e "\e[1;32m==>\e[1;37m Updating Package version"
 sed -i "6s/pkgver=\"[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\"/pkgver=\"$1\"/" PKGBUILD
+
 echo -e "\e[1;32m==>\e[1;37m Downloading x86_64 version"
 curl -fLC -  --retry 3 --retry-delay 3 -o google-chrome-unstable_current_x86_64.rpm "https://dl.google.com/linux/direct/google-chrome-unstable_current_x86_64.rpm"
+
 echo -e "\e[1;32m==>\e[1;37m Downloading i386 version"
 curl -fLC -  --retry 3 --retry-delay 3 -o google-chrome-unstable_current_i386.rpm "https://dl.google.com/linux/direct/google-chrome-unstable_current_i386.rpm"
+
 echo -e "\e[1;32m==>\e[1;37m Updating checksums"
 i386sum=$(sha512sum google-chrome-unstable_current_i386.rpm | cut -d " " -f 1)
 sed -i "20s/sha512sums+=(\"[A-Z,a-z,0-9]*\")/sha512sums+=(\"$i386sum\")/" PKGBUILD
 x8664sum=$(sha512sum google-chrome-unstable_current_x86_64.rpm | cut -d " " -f 1)
 sed -i "23s/sha512sums+=(\"[A-Z,a-z,0-9]*\")/sha512sums+=(\"$x8664sum\")/" PKGBUILD
+
 echo -e "\e[1;32m==>\e[1;37m Checking license for changes"
 lynx --assume_charset=utf8 --dump "https://www.google.com/chrome/intl/en/eula_text.html" > LICENSE
 new=$(sha512sum LICENSE)
@@ -20,15 +24,20 @@ else
     license=$(echo "$new" | cut -d " " -f 1)
 	sed -i "16s/sha512sums=(\"[A-Z,a-z,0-9]*\")/sha512sums+=(\"$license\")/" PKGBUILD
 fi
+
 echo -e "\e[1;32m==>\e[1;37m Building package"
 makepkg
+
 echo -e "\e[1;32m==>\e[1;37m Building source package"
 makepkg --source
+
 echo -e "\e[1;32m==>\e[1;37m Displaying package contents"
 tar -tvf *.pkg.tar.xz
+
 echo -e "\e[1;32m==>\e[1;37m Running namcap on PKGBUILD"
 namcap PKGBUILD
+
 echo -e "\e[1;32m==>\e[1;37m Running namcap on built package"
 namcap *.pkg.tar.xz
-echo -e "\e[1;32m==>\e[1;37m Done"
 
+echo -e "\e[1;32m==>\e[1;37m Done"

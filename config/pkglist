@@ -10,7 +10,6 @@ bison
 btrfs-progs
 bzip2
 cabextract
-calibre
 ccache
 conky
 coreutils
@@ -42,7 +41,6 @@ findutils
 flashplugin
 flex
 gawk
-gdb
 gedit
 gedit-plugins
 gimp
@@ -51,7 +49,6 @@ gksu
 gnome-keyring
 gnuplot
 gparted
-gpointing-device-settings
 gptfdisk
 grep
 gstreamer0.10-base-plugins
@@ -71,7 +68,6 @@ inkscape
 iproute2
 iputils
 jfsutils
-john
 less
 lib32-alsa-plugins
 lib32-intel-dri
@@ -93,7 +89,6 @@ libvdpau-va-gl
 licenses
 linux
 logrotate
-lshw
 lsof
 lvm2
 lxappearance
@@ -109,15 +104,14 @@ make
 man-db
 man-pages
 mariadb
+maxima
 mdadm
 mlocate
-mono
 most
 mpv
 mtpaint
 mtpfs
 namcap
-nano
 net-tools
 netctl
 network-manager-applet
@@ -146,11 +140,11 @@ pulseaudio
 pulseaudio-alsa
 python-markdown
 python-matplotlib
+python2-lxml
 redshift
 reflector
 reiserfsprogs
 rsync
-ruby
 sakura
 sed
 shadow
@@ -170,6 +164,7 @@ thunar-volman
 thunderbird
 thunderbird-i18n-en-gb
 tk
+traceroute
 transmission-cli
 transmission-gtk
 ttf-arphic-uming
@@ -200,7 +195,6 @@ xautolock
 xcursor-vanilla-dmz
 xf86-input-synaptics
 xf86-video-intel
-xfsprogs
 xorg-fonts-type1
 xorg-server-utils
 xorg-xev

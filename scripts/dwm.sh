@@ -12,7 +12,8 @@ autostart=( '$HOME/Scripts/bat.sh'
 			'gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh'
 			'xautolock -time 5 -locker "slock" -killer "systemctl suspend" -killtime 10 -detectsleep'
 			'xrdb -merge "$HOME"/.Xresources'
-			'xsetroot -name " "')
+			'xsetroot -name " "'
+			)
 
 
 # System autostart directories
@@ -45,12 +46,15 @@ export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK &
 # Add items to autostart for full only
 [[ "$1" = "full" ]] && autostart+=(	'firefox-ux'
 									'spotify'
-									'sakura')
+									'sakura'
+									)
 
 # Partial/full autostart additions
 if [[ "$1" = "partial" || "$1" = "full" ]]; then
 	# Autostart items in full and partial
-	autostart+=('thunderbird')
+	autostart+=('thunderbird'
+				'transmission-gtk -m'
+				)
 	# Secondary autostart directory, nothing important started here so okay to skip in clean for minimal session
 	if [[ -d $HOME/.config/autostart ]]; then
 		for n in $HOME/.config/autostart/*; do
@@ -81,10 +85,7 @@ bgcolour="#272822"
 font="Fira Mono:size=8"
 dzevents="key_Escape=exit;sigusr1=raise;sigusr2=lower;"
 
-conky -c .conkyrc | dzen2 -x "694" -h "13" -w "550" -ta r -fg "${fgcolour}" -bg "${bgcolour}" -fn "${font}" -e "${dzevents}" &
-
-# Dzen starts before dwm, so this is used to make dzen go over the dwm bar
-sleep 10s && kill -USR1 `pgrep dzen` &
+sleep 10s && conky -c .conkyrc | dzen2 -x "694" -h "13" -w "550" -ta r -fg "${fgcolour}" -bg "${bgcolour}" -fn "${font}" -e "${dzevents}" &
 
 # Starts last so script exits on dwm exit
 # Not backgrounded to prevent script exiting and lxdm killing everything
