@@ -25,25 +25,12 @@ promptinit
 autoload -U colors
 colors
 
-source /usr/share/git/completion/git-prompt.sh
 #Prompt with plenty of colour, and accurate time.
-PROMPT='[$fg[blue]%* $fg[green]%n $fg[yellow]%m$fg[red]%(?.. %?)$fg[cyan]$(__git_ps1 " %s") %{$reset_color%}%~]
+PROMPT='[$fg[blue]%n $fg[yellow]%m%(?.. $fg[red]%?) $fg[green]%~$reset_color]
 ⇀  '
-
-
-schedprompt(){
-	emulate -L zsh
-	zmodload -i zsh/sched
-	integer i=${"${(@)zsh_sheduled_events#*:*:}"[(I)schedprompt]}
-	(( i )) && sched -$i
-	zle && zle reset-prompt
-	sched +1 schedprompt
-}
-
-schedprompt
-
 #Aliases
 alias ls="ls --color=auto -A"
+alias grep="grep --color=auto"
 alias update="yaourt -Syau"
 alias cp="cp -r --reflink=auto"
 alias fucking="sudo"
@@ -52,44 +39,47 @@ alias ...="../../"
 alias ....="../../../"
 alias .....="../../../../"
 alias mpv="mpv --save-position-on-quit --autosub --autosub-match=fuzzy --stop-screensaver"
+alias die="systemctl poweroff"
+alias max="rmaxima -q"
+alias oct="octave -q"
+alias note="notify-send -a 'The Laughing Man'"
 
 #Environment Variables
 export EDITOR="vim"
-export PAGER="most"
-export GPGKEY="F1D248BC"
 
 #File Extraction
 ex()
 {
-	if [ -f $1 ] ; then
-		case $1 in
-			*.tar.bz2)	tar xjf $1	;;
-			*.tar.gz)	tar xzf $1	;;
-			*.bz2)		bunzip2 $1	;;
-			*.rar)		unrar x $1	;;
-			*.gz)		gunzip $1	;;
-			*.tar)		tar xf $1	;;
-			*.tbz2)		tar xjf $1	;;
-			*.tgz)		tar xzf $1	;;
-			*.zip)		unzip $1	;;
-			*.Z)		uncompress $1	;;
-			*.7z)		7z x $1		;;
-			*.rpm)		bsdtar xvf $1 ;;
-			*.deb)		bsdtar xvf $1 ;;
-			*)			echo "'$1' cannot be extracted"	;;
+	if [ -f "$1" ] ; then
+		case "$1" in
+			*.tar.bz2)	tar xjf "$1"	;;
+			*.tar.gz)	tar xzf "$1"	;;
+			*.bz2)		bunzip2 "$1"	;;
+			*.rar)		unrar x "$1"	;;
+			*.gz)		gunzip "$1"	;;
+			*.tar)		tar xf "$1"	;;
+			*.tbz2)		tar xjf "$1"	;;
+			*.tgz)		tar xzf "$1"	;;
+			*.zip)		unzip "$1"	;;
+			*.Z)		uncompress "$1"	;;
+			*.7z)		7z x "$1"		;;
+			*.rpm)		bsdtar xvf "$1" ;;
+			*.deb)		bsdtar xvf "$1" ;;
+			*)			bsdtar xff "$1" || echo "'$1' cannot be extracted"	;;
 		esac
 	else
-		echo "'$1' is not a valid file"
+		echo "'$1' is not a file"
 	fi
 }
 
+#Go to a directory and show all the shit there
 go()
 {
 	cd "$1" || return 1;
 	ls;
 }
 
-#Screenlock Pause
+#Xautolock Pause
 pause()
 {
 	xautolock -disable
@@ -97,7 +87,6 @@ pause()
 	xautolock -enable
 }
 
-#Key Bindings
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
@@ -105,11 +94,11 @@ bindkey '^[[B' down-line-or-search
 command_not_found_handler(){
 	local pkgs cmd="$1"
 	pkgs=(${(f)"$(pkgfile -bv -- "$cmd" 2>/dev/null)"})
-	printf "$fg[red] I'm sorry, $LOGNAME. I'm afraid I can't do that. \n"
+	printf "$fg[red]I'm sorry, $LOGNAME. I'm afraid I can't do that. \n"
 	if [[ -n "$pkgs" ]]; then
-		printf "$fg[yellow] %s \n" $pkgs[@]
+		printf "$fg[blue]The following packages provide $1:\n$fg[yellow]%s\n" $pkgs[@]
 		return 0
 	else;
-		printf "No packages provide $1 \n"
+		printf "$fg[green]No packages provide $1 \n"
 	fi
 }

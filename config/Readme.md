@@ -1,9 +1,9 @@
 ##Readme
 =========
 
-The AURPKGLIST and PKGLIST files don't get saved anywhere.
+The AURPKGLIST and PKGLIST files don't get saved anywhere (they're used as an argument for yaourt and pacman to quickly reinstall everything)
 
-The conkyrc and conkyrcdzen files get saved to $HOME/.conkyrc{,dzen} respectively.
+The conkyrc file gets saved to $HOME/.conkyrc respectively.
 
 The dunstrc file gets saved to $HOME/.config/dunst/dunstrc.
 
@@ -15,4 +15,4 @@ The sakura.conf file gets saved to $HOME/sakura/sakura.conf
 
 The vimrc and zshrc files get saved to $HOME/.{vim,zsh}rc respectively.
 
-The yaourtrc file gets saved to /etc/yaourtrc.
+The makepkg.conf, pacman.conf and yaourtrc files get saved to /etc/.

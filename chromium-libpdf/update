@@ -10,9 +10,9 @@ curl -fLC -  --retry 3 --retry-delay 3 -o google-chrome-unstable_current_i386.rp
 
 echo -e "\e[1;32m==>\e[1;37m Updating checksums"
 i386sum=$(sha512sum google-chrome-unstable_current_i386.rpm | cut -d " " -f 1)
-sed -i "20s/sha512sums+=(\"[A-Z,a-z,0-9]*\")/sha512sums+=(\"$i386sum\")/" PKGBUILD
+sed -i "21s/sha512sums+=(\"[A-Z,a-z,0-9]*\")/sha512sums+=(\"$i386sum\")/" PKGBUILD
 x8664sum=$(sha512sum google-chrome-unstable_current_x86_64.rpm | cut -d " " -f 1)
-sed -i "23s/sha512sums+=(\"[A-Z,a-z,0-9]*\")/sha512sums+=(\"$x8664sum\")/" PKGBUILD
+sed -i "24s/sha512sums+=(\"[A-Z,a-z,0-9]*\")/sha512sums+=(\"$x8664sum\")/" PKGBUILD
 
 echo -e "\e[1;32m==>\e[1;37m Checking license for changes"
 lynx --assume_charset=utf8 --dump "https://www.google.com/chrome/intl/en/eula_text.html" > LICENSE

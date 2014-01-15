@@ -2,6 +2,6 @@
 Encoding=UTF-8
 Name=Dwm
 Comment=Dynamic window manager
-Exec=/home/andrew/dwm.sh
+Exec=/home/andrew/dwm.sh full
 Icon=dwm
 Type=XSession
